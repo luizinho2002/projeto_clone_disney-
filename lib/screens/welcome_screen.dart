@@ -7,101 +7,95 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset('assets/images/disney_plus_logo.png', height: 100),
+      body: SafeArea(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                // 1. Logo
+                Image.asset('assets/images/disney_logo_plus.png', height: 100),
 
-            const SizedBox(
-              height: 120,
-            ), // Espaçamento grande entre o logo e o primeiro botão
+                const SizedBox(height: 120),
 
-            SizedBox(height: 50, child: _buildSignUpWithEmailButton()),
-
-            const SizedBox(height: 16), // Espaçamento entre os dois botões
-
-            SizedBox(height: 50, child: _buildSignUpWithSocialMediaButton()),
-
-            const SizedBox(
-              height: 24,
-            ), // Espaçamento entre o segundo botão e o texto "Skip"
-
-            TextButton(
-              onPressed: () {},
-              child: const Text(
-                'Skip',
-                style: TextStyle(
-                  color: Colors.blue, // A cor do texto "Skip"
-                  fontSize: 16,
+                // 2. Botão de Email
+                ElevatedButton(
+                  onPressed: () {
+                    // Ação do botão
+                  },
+                  style:
+                      ElevatedButton.styleFrom(
+                        padding: EdgeInsets.zero,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                        minimumSize: const Size.fromHeight(50),
+                      ).copyWith(
+                        backgroundColor: MaterialStateProperty.all(
+                          Colors.transparent,
+                        ),
+                      ),
+                  child: Ink(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30.0),
+                      gradient: const LinearGradient(
+                        colors: [Color(0xFF001150), Color(0xFF002277)],
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                      ),
+                    ),
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: const Text(
+                        'Sign up with Email',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
 
-  Widget _buildSignUpWithEmailButton() {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30.0), // Arredonda os cantos
-        gradient: const LinearGradient(
-          colors: [
-            Color(0xFF001150), // Um azul escuro
-            Color(0xFF002277), // Um azul um pouco mais claro
-          ],
-          begin: Alignment.centerLeft,
-          end: Alignment.centerRight,
-        ),
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: () {
-            // Ação para o botão de e-mail
-          },
-          borderRadius: BorderRadius.circular(30.0),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(vertical: 16.0),
-            child: Center(
-              child: Text(
-                'Sign up with Email',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
+                const SizedBox(height: 16),
+
+                // 3. Botão de Mídias Sociais
+                OutlinedButton(
+                  onPressed: () {
+                    // Ação do botão
+                  },
+                  style: OutlinedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    side: const BorderSide(color: Colors.blue, width: 2),
+                    minimumSize: const Size.fromHeight(50),
+                    foregroundColor: Colors.blue,
+                  ),
+                  child: const Text(
+                    'Sign up with Social Media',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
                 ),
-              ),
+
+                const SizedBox(height: 24),
+
+                // 4. Texto "Skip"
+                TextButton(
+                  onPressed: () {
+                    // Ação para o "Skip"
+                  },
+                  child: const Text(
+                    'Skip',
+                    style: TextStyle(color: Colors.blue, fontSize: 16),
+                  ),
+                ),
+              ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildSignUpWithSocialMediaButton() {
-    return OutlinedButton(
-      onPressed: () {
-        // Ação para o botão de mídias sociais
-      },
-      style: OutlinedButton.styleFrom(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30.0), // Arrendonda os cantos
-        ),
-        side: const BorderSide(
-          color: Colors.blue, // Cor da borda
-          width: 2,
-        ),
-        padding: const EdgeInsets.symmetric(vertical: 16.0),
-      ),
-      child: const Text(
-        'Sign up with Social Media',
-        style: TextStyle(
-          color: Colors.blue, // Cor do texto
-          fontSize: 18,
-          fontWeight: FontWeight.normal,
         ),
       ),
     );
