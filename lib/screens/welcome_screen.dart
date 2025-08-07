@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
 
+  static const double buttonHeight = 60.0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,51 +18,46 @@ class WelcomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 // 1. Logo
-                Image.asset('assets/images/disney_logo_plus.png', height: 100),
+                Image.asset('assets/images/disney_plus_logo.png', height: 100),
 
                 const SizedBox(height: 120),
 
-                // 2. Botão de Email
-                ElevatedButton(
-                  onPressed: () {
-                    // Ação do botão
-                  },
-                  style:
-                      ElevatedButton.styleFrom(
-                        padding: EdgeInsets.zero,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                        minimumSize: const Size.fromHeight(50),
-                      ).copyWith(
-                        backgroundColor: MaterialStateProperty.all(
-                          Colors.transparent,
-                        ),
-                      ),
-                  child: Ink(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30.0),
-                      gradient: const LinearGradient(
-                        colors: [Color(0xFF001150), Color(0xFF002277)],
-                        begin: Alignment.centerLeft,
-                        end: Alignment.centerRight,
-                      ),
+                // 2. Botão de Email (utilizando uma nova abordagem)
+                Container(
+                  height: buttonHeight,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(30.0),
+                    gradient: const LinearGradient(
+                      colors: [Color(0xFF001150), Color(0xFF002277)],
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
                     ),
-                    child: Container(
-                      alignment: Alignment.center,
-                      child: const Text(
-                        'Sign up with Email',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                  ),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: () {
+                        // Ação do botão
+                      },
+                      borderRadius: BorderRadius.circular(30.0),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(vertical: 16.0),
+                        child: Center(
+                          child: Text(
+                            'Sign up with Email',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
 
-                const SizedBox(height: 16),
+                const SizedBox(height: 24),
 
                 // 3. Botão de Mídias Sociais
                 OutlinedButton(
@@ -72,6 +69,7 @@ class WelcomeScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                     side: const BorderSide(color: Colors.blue, width: 2),
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
                     minimumSize: const Size.fromHeight(50),
                     foregroundColor: Colors.blue,
                   ),
@@ -81,7 +79,7 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: 24),
+                const SizedBox(height: 30),
 
                 // 4. Texto "Skip"
                 TextButton(
