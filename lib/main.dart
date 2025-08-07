@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:disney_plus_clone/screens/welcome_screen.dart';
+// import 'package:disney_plus_clone/screens/welcome_screen.dart';
+import 'package:disney_plus_clone/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch:
             Colors.blue, // Você pode escolher a cor primário que quiser
       ),
-      home: const WelcomeScreen(),
+      home: const HomeScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
